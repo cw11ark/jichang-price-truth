@@ -1,0 +1,127 @@
+{
+  "updated": "2026-10-29",
+  "meta": {
+    "title": "机场测评报价验真：贝贝云第三方报价 vs 登录后台实价",
+    "tagline": "同一个贝贝云，两篇测评写 ¥9.9 / ¥14.9 月付；本账号登录后台当前却是 100G 半年 ¥129.90 起。",
+    "intro": "这不是泛机场推荐榜，而是一份可复核的时点对账：逐条链接第三方页面，再与 2026-10-29 登录贝贝云账号后实际返回的 5 个套餐对照。",
+    "owner_repo": "cw11ark/jichang-price-truth",
+    "captured_at": "2026-10-29 04:47 CST",
+    "disclaimer": "价格、套餐与账号分组都可能变化；本文只证明取证时点两个页面各自展示了什么，下单前请再次登录官网核价。",
+    "conclusion": "截至本次取证，51VPS 仍写 **80G 月付 ¥9.9**，茶波博客仍写 **100G 月付 ¥14.9**；而本账号登录后台只返回 5 个套餐，100G 档 `month_price=null`、`quarter_price=null`，最低是半年 **¥129.90**。因此这两条第三方报价都不能直接当成本账号当前可购买价。"
+  },
+  "comparisons": [
+    {
+      "source": "51VPS 技术博客",
+      "url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/",
+      "claim": "80G/月；月付 **¥9.9**、季付 ¥28.9、半年 ¥55.9、年付 ¥99.9",
+      "official": "无 80G 档；100G 档无月付/季付，半年 **¥129.90**、年付 ¥249.90",
+      "verdict": "流量档、付款周期与金额均不一致"
+    },
+    {
+      "source": "茶波博客 clashx.pro",
+      "url": "https://clashx.pro/beibeilink-review/",
+      "claim": "100G/月，月付 **¥14.9**",
+      "official": "100G 档无月付，半年 **¥129.90**（折 ¥21.65/月）",
+      "verdict": "付款周期与折合金额不一致"
+    }
+  ],
+  "official_plans": [
+    {"plan": "100G/月", "month": "—", "quarter": "—", "half_year": "¥129.90", "year": "¥249.90", "minimum": "半年"},
+    {"plan": "200G/月", "month": "—", "quarter": "¥99.90", "half_year": "¥189.90", "year": "¥349.90", "minimum": "季"},
+    {"plan": "300G/月", "month": "—", "quarter": "¥139.90", "half_year": "¥269.90", "year": "¥499.90", "minimum": "季"},
+    {"plan": "500G/月", "month": "—", "quarter": "¥199.90", "half_year": "¥379.90", "year": "¥699.90", "minimum": "季"},
+    {"plan": "1000G/月", "month": "—", "quarter": "¥299.90", "half_year": "¥549.90", "year": "¥929.90", "minimum": "季"}
+  ],
+  "official_note": "以上 5 行来自登录账号后的 `/user/plan/fetch` 响应，账号可见 `group_id=6`。公开 guest 接口同时返回 30 条、含多组互相冲突的套餐；因此本文**不把 guest 全量当成任一用户都能购买的后台实价**。",
+  "withdrawn_source_note": "原选题摘要把 `gptvpnhelper` 记作“贝贝云 100GB ¥19.9/月”。回查具体 URL 后，`https://gptvpnhelper.com/bbxy/` 当前标题和正文都是**百变小樱机场**，并非贝贝云，而且当前写的是 100GB 月付 ¥15。无法证明旧摘要对应哪一页，所以本仓明确撤回该条，⛔ 为凑数写进对照表。",
+  "evidence_index": [
+    {
+      "name": "51VPS 原文",
+      "purpose": "证明页面当前仍展示 80G/月、月付 9.9",
+      "link_label": "打开原文",
+      "url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/",
+      "snapshot": "evidence/51vps.html"
+    },
+    {
+      "name": "茶波博客原文",
+      "purpose": "证明页面当前仍展示 100G/月、月付 14.9",
+      "link_label": "打开原文",
+      "url": "https://clashx.pro/beibeilink-review/",
+      "snapshot": "evidence/clashx.html"
+    },
+    {
+      "name": "贝贝云前端配置",
+      "purpose": "证明官网标题和实际 API 基址，不把猜测端点当官网数据",
+      "link_label": "打开配置",
+      "url": "https://2beibei.com/config.js",
+      "snapshot": "evidence/official-config.js"
+    },
+    {
+      "name": "贝贝云公开套餐接口",
+      "purpose": "展示公开端点会返回 30 条、多 group 套餐，说明 guest 数据存在口径陷阱",
+      "link_label": "打开公开 API",
+      "url": "https://vercdn.beibeicloud.shop/bei/guest/plan/fetch",
+      "snapshot": "evidence/official-guest-plans.json"
+    },
+    {
+      "name": "贝贝云永久官网",
+      "purpose": "确认官方入口及备用域名指引",
+      "link_label": "打开永久官网",
+      "url": "https://111.beibei.cloud/",
+      "snapshot": "evidence/capture-meta.json"
+    },
+    {
+      "name": "本账号登录后台套餐快照",
+      "purpose": "真正用于价格判定的 5 条 group_id=6 套餐；已去除身份与认证字段",
+      "link_label": "登录后端点（无 token 会 403）",
+      "url": "https://vercdn.beibeicloud.shop/bei/user/plan/fetch",
+      "snapshot": "evidence/official-authenticated-plans.json"
+    }
+  ],
+  "methodology": [
+    "所有在线页面均在 2026-10-29 04:47 CST 经 cw11ark 对应的香港出口重新抓取；不是沿用 10-25 摘要。",
+    "第三方原文同时保留 HTML 与抽取文本快照；`capture-meta.json` 记录最终 URL、HTTP 状态、字节数与 SHA-256。",
+    "后台价格使用已存在的贝贝云登录会话请求 `/user/plan/fetch`；仓内只写白名单套餐字段，绝不保存 Authorization、邮箱、cookie 或订阅链接。",
+    "自动门禁只验证在线来源仍可访问并包含区分度足够的 token；复杂结论仍由上面的逐项字段对照得出。",
+    "若第三方页面改价或下线，后续版本应标注‘已更正/已下线’，不能用旧快照冒充当前页面。"
+  ],
+  "checklist": [
+    "先看测评页发布日期和最近更新时间；‘有更新文字’不等于价格表也已更新。",
+    "从永久官网进入并登录，确认账号实际可见的套餐组；不要只看 guest 接口的全量响应。",
+    "同时核对流量档、付款周期和总价。‘折合月价’不等于可以月付。",
+    "付款前重新截图或记录套餐名与总价；价格改变时保留时点，不把历史差异写成永久结论。"
+  ],
+  "affiliate_disclosure": "下方是我们的贝贝云返利链接，注册成交后我们可能获得 **5%** 佣金；这不改变上面的核价结果。你也可以从永久官网手工进入，不经过返利链接。",
+  "affiliate_url": "https://2beibei.com/register?code=tYdL5jFF",
+  "sections": [
+    {
+      "title": "第三方报价原文",
+      "icon": "🧾",
+      "description": "仍可在线打开、且当前正文保留具体报价的第三方页面。",
+      "items": [
+        {"name": "51VPS 贝贝云测评", "url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/", "what": "当前正文写 80G/月、月付 9.9。", "tags": ["第三方", "¥9.9"]},
+        {"name": "茶波博客贝贝云测评", "url": "https://clashx.pro/beibeilink-review/", "what": "当前正文写 100G/月、月付 14.9。", "tags": ["第三方", "¥14.9"]}
+      ]
+    },
+    {
+      "title": "官方在线证据",
+      "icon": "🔎",
+      "description": "官网入口、前端实际 API 配置与套餐端点。",
+      "items": [
+        {"name": "贝贝云永久官网", "url": "https://111.beibei.cloud/", "what": "官方前置页，正文给出当前备用入口。", "tags": ["官网"]},
+        {"name": "贝贝云前端配置", "url": "https://2beibei.com/config.js", "what": "公开配置写明 title=贝贝云 和 API 基址。", "tags": ["官网", "配置"]},
+        {"name": "公开套餐接口", "url": "https://vercdn.beibeicloud.shop/bei/guest/plan/fetch", "what": "公开接口返回跨 group 的 30 条套餐，用于展示 guest 口径风险。", "tags": ["官网", "API"]},
+        {"name": "登录后台套餐端点", "url": "https://vercdn.beibeicloud.shop/bei/user/plan/fetch", "what": "需登录，本文的 5 条当前实价来自该端点的账号可见结果。", "tags": ["官网", "需登录"]}
+      ]
+    }
+  ],
+  "verification_sources": [
+    {"name": "51VPS 报价", "url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/", "expected_token": "80G/月 月付9.9/季付28.9"},
+    {"name": "茶波报价", "url": "https://clashx.pro/beibeilink-review/", "expected_token": "¥14.9/月，100G流量/月"},
+    {"name": "官网前端配置", "url": "https://2beibei.com/config.js", "expected_token": "title: \"贝贝云\""},
+    {"name": "官网 API 基址", "url": "https://2beibei.com/config.js?v=api", "expected_token": "vercdn.beibeicloud.shop/bei"},
+    {"name": "官方套餐 ID 24", "url": "https://vercdn.beibeicloud.shop/bei/guest/plan/fetch", "expected_token": "\"id\":24,\"group_id\":6"},
+    {"name": "官方半年价", "url": "https://netcdn.beibeicloud.shop/bei/guest/plan/fetch", "expected_token": "half_year_price\":12990"},
+    {"name": "永久官网入口", "url": "https://111.beibei.cloud/", "expected_token": "贝贝云前置页-请收藏"}
+  ]
+}

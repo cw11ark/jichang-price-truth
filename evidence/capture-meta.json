@@ -1,0 +1,55 @@
+{
+  "captured_at": "2026-10-29T04:47:26+08:00",
+  "proxy": "cw11ark account line / HK / local port 19029",
+  "sources": [
+    {
+      "name": "51vps",
+      "url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/",
+      "http_status": 200,
+      "final_url": "https://www.51vps.info/large-bandwidth-jc-beibeicloud/",
+      "sha256": "61d4de731ac463c57042f9003fa8f9e10ff28b0e66f1257ffcdc2c957271bfef",
+      "bytes": 54039
+    },
+    {
+      "name": "clashx",
+      "url": "https://clashx.pro/beibeilink-review/",
+      "http_status": 200,
+      "final_url": "https://clashx.pro/beibeilink-review/",
+      "sha256": "28fcdf71a08d1b124411d0f5d38d60ec20bd67d4ac4aa0d35bf4a98ea03c1572",
+      "bytes": 44081
+    },
+    {
+      "name": "gptvpnhelper",
+      "url": "https://gptvpnhelper.com/bbxy/",
+      "http_status": 200,
+      "final_url": "https://gptvpnhelper.com/bbxy/",
+      "sha256": "f4569459050a14827d930141dfe36e87521d7901bdde738d9069bccb99c37bba",
+      "bytes": 23463
+    },
+    {
+      "name": "official-config",
+      "url": "https://2beibei.com/config.js",
+      "http_status": 200,
+      "final_url": "https://2beibei.com/config.js",
+      "sha256": "a9b6dc89994c1b577e5979f92797e6108730887965eeb489ba447f5c90eff699",
+      "bytes": 1981
+    },
+    {
+      "name": "official-guest-plans",
+      "url": "https://vercdn.beibeicloud.shop/bei/guest/plan/fetch",
+      "http_status": 200,
+      "final_url": "https://vercdn.beibeicloud.shop/bei/guest/plan/fetch",
+      "sha256": "b9aa90893dc285f6174a66edec863ea3a6cc4dee3a1014b233a446d8c32320de",
+      "bytes": 27802,
+      "records": 30
+    },
+    {
+      "name": "official-authenticated-plans",
+      "url": "https://vercdn.beibeicloud.shop/bei/user/plan/fetch",
+      "http_status": 200,
+      "sha256": "f57a9bcf9b30f4a56eb6e37378e072d6310cccf09d8f79658ddccee730eff310",
+      "records": 5,
+      "note": "sanitized local snapshot; authorization and account identity not stored"
+    }
+  ]
+}
