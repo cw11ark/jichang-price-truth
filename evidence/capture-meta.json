@@ -49,7 +49,7 @@
       "http_status": 200,
       "sha256": "f57a9bcf9b30f4a56eb6e37378e072d6310cccf09d8f79658ddccee730eff310",
       "records": 5,
-      "note": "sanitized local snapshot; authorization and account identity not stored"
+      "note": "sanitized local snapshot; credentials and account identity not stored"
     }
   ]
 }
